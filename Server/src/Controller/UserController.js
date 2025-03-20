@@ -1,21 +1,21 @@
-const User = require("../models/User");
+const user = require("../models/UserModels");
 
 //  CREATE - Register a new user
-exports.createUser = async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const newUser = new User({ username, email, password });
+const createUser = async (req, res) => {
+try {
+    const newUser = new user(req.body);
+    console.log('newUser',newUser)
     await newUser.save();
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(500).json({ message: "Error creating user", error });
+    res.status(400).json({ message: error.message });
   }
 };
 
 //  READ - Get all users
-exports.getUsers = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await user.find();
     res.json(users);
   } catch (error) {
     res.status(500).json({ message: "Error fetching users", error });
@@ -23,20 +23,20 @@ exports.getUsers = async (req, res) => {
 };
 
 //  READ - Get single user by ID
-exports.getUser = async (req, res) => {
+const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.json(user);
+    const singleUser = await user.findById(req.params.id);
+    if (!singleUser) return res.status(404).json({ message: "User not found" });
+    res.json(singleUser);
   } catch (error) {
     res.status(500).json({ message: "Error fetching user", error });
   }
 };
 
 //  UPDATE - Update user details
-exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedUser = await user.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: "Error updating user", error });
@@ -44,11 +44,13 @@ exports.updateUser = async (req, res) => {
 };
 
 //  DELETE - Remove a user
-exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
+    await user.findByIdAndDelete(req.params.id);
     res.json({ message: "User deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting user", error });
   }
 };
+
+module.exports={createUser,getUsers,getUser,updateUser,deleteUser}

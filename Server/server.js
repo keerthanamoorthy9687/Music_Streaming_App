@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 require("dotenv").config();
-const PORT=process.env.PORT||3030;
+const PORT=process.env.PORT||3000;
 
 //connecting to the MongoDB
 const connectDB=require('./src/Config/db')
@@ -9,9 +9,13 @@ connectDB();
 
 //converting the json format
 app.use(express.json());
+//Routescls
 
 
-// app.use();
+const userRoute=require('./src/Routes/UserRoutes')
+const songRoute=require('./src/Routes/SongRoutes')
+app.use('/api/auth/',userRoute);
+app.use('/api/',songRoute);
 
 
 

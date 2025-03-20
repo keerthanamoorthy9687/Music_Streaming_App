@@ -7,6 +7,6 @@ const Playlist=new mongoose.Schema({
     isPublic:{type:Boolean},
     createdAt: { type: Date, default: Date.now },
 })
-
-module.exports=mongoose.model('playlist',Playlist)
+const playlist=mongoose.model('playlist',Playlist)
+module.exports=playlist
 

@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 const Songs=new mongoose.Schema({
-    title:{type:String} ,
+    title:{type:String,required:true} ,
     artist:{type: String},
     genre: {Type:String},
     albumCover:{type: String},
@@ -10,5 +10,5 @@ const Songs=new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 
 })
-
-module.exports=mongoose.model('song',Songs)
+const song=mongoose.model('song',Songs)
+module.exports=song

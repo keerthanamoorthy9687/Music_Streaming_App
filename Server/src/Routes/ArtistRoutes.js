@@ -1,12 +1,13 @@
 const express=require('express');
 const router=express.Router();
-const artistController=require('../Controller/ArtistController')
+const artistControl=require('../Controller/ArtistController')
 
 
-router.post("/artist", artistController.createArtist); // Create artist
-router.get("/artist", artistController.getArtists); // Get All artists
-router.get("/artist/:id", artistController.getArtist); // Get Single artist
-router.put("/artist/:id", artistController.updateArtist); // Update artist
-router.delete("/artist/:id", artistController.deleteArtist); // Delete artist
+//define route path
+router.post("/artist", artistControl.createArtist); // Create artist
+router.get("/artist", artistControl.getArtists); // Get All artists
+router.get("/artist/:id", artistControl.getArtist); // Get Single artist
+router.put("/artist/:id", artistControl.updateArtist); // Update artist
+router.delete("/artist/:id", artistControl.deleteArtist); // Delete artist
 
 module.exports=router;
