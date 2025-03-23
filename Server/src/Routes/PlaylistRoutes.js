@@ -4,10 +4,11 @@ const playlistControl=require('../Controller/PlaylistController')
 
 
 //define route path
-router.post("/playlist", playlistControl.createPlaylist); // Create playlist
-router.get("/playlist", playlistControl.getAllPlaylists); // Get All playlists
-router.get("/playlist/:id", playlistControl.getAllPlaylists); // Get Single playlist
-router.put("/playlist/:id", playlistControl.updatePlaylist); // Update playlist
-router.delete("/playlist/:id", playlistControl.deletePlaylist); // Delete playlist
+router.post("/", playlistControl.createPlaylist); // Create playlist
+router.get("/", playlistControl.getUserPlaylists); // Get All playlists
+router.get("/:playlistId", playlistControl.getPlaylistById); // Get Single playlist
+router.put("/:playlistId/add/:songId", playlistControl.addSongToPlaylist); // Update playlist
+router.put("/:playlistId/remove/:songId", playlistControl.removeSongFromPlaylist); // remove the playlist
+router.delete("/:playlistId", playlistControl.deletePlaylist); // Delete playlist
 
 module.exports=router;

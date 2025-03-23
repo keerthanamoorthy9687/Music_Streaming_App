@@ -7,5 +7,5 @@ const Comment=new mongoose.Schema({
     commentText:{type:String},
     createdAt:{type:Date,default:Date.now}
 })
-
-module.exports=mongoose.model('comment',Comment)
+const comment=mongoose.model('comment',Comment)
+module.exports=comment

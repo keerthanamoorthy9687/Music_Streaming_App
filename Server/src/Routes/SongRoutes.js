@@ -4,11 +4,11 @@ const songControl=require('../Controller/SongController')
 
 
 //define route path
-router.post("/song", songControl.createSong); // Create song
-router.get("/song", songControl.getSongs); // Get All songs
-router.get("/song/:id", songControl.getSong); // Get Single song
-router.put("/song/:id", songControl.updateSong); // Update song
-router.delete("/song/:id", songControl.deleteSong); // Delete song
+router.post("/", songControl.createSong); // Create song
+router.get("/", songControl.getSongs); // Get All songs
+router.get("/:songId", songControl.getSong); // Get Single song
+router.put("/:songId", songControl.updateSong); // Update song
+router.delete("/:songId", songControl.deleteSong); // Delete song
 
 
 module.exports=router

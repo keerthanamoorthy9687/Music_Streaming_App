@@ -1,14 +1,15 @@
 const express=require('express');
 const router=express.Router();
 const likeControl=require('../Controller/LikeController')
+// const authMiddleware=require('../Middleware/AuthMiddleware');
+
 
 
 //define route path
-router.post("/like", likeControl.createLike); // Create like
-router.get("/like", likeControl.getLikes); // Get All likes
-router.get("/like/:id", likeControl.getLike); // Get Single like
-router.put("/like/:id", likeControl.updateLike); // Update like
-router.delete("/like/:id", likeControl.deleteLike); // Delete like
+router.post('/',  likeControl.likeItem); // Like an item
+router.delete('/:songId',likeControl.unlikeItem); // Unlike an item
+router.get('/:songId', likeControl.getTotalLikes); // Get total likes
+router.get('/:songId/:userId', likeControl.checkUserLike); // Check if user
 
 module.exports=router;
 

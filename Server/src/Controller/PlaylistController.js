@@ -1,67 +1,109 @@
 const Playlist = require('../Models/PlaylistModels');
+const User=require('../Models/UserModels')
 
+
+
+//  Create a new playlist
 const createPlaylist = async (req, res) => {
     try {
-        const { name, songs } = req.body;
-        const userId = req.user.id; // Assuming authentication is handled
+        const { name,user, songs } = req.body;
+        
 
-        const newPlaylist = new Playlist({ name, user: userId, songs });
+        const newPlaylist = new Playlist({ name, user, songs });
         await newPlaylist.save();
+
+        // Add playlist reference to user
+        await User.findByIdAndUpdate(user, { $push: { playlists: newPlaylist._id } });
 
         res.status(201).json(newPlaylist);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-//READ   Get all playList 
-const getAllPlaylists = async (req, res) => {
+
+//  Get all playlists of a user
+const getUserPlaylists = async (req, res) => {
     try {
-        const playlists = await Playlist.find().populate('user', 'name').populate('songs');
+        // const {user}=req.params;
+        const playlists = await Playlist.find({});
+
         res.json(playlists);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-//READ - Get single playList by ID
+
+//  Get a single playlist by ID
 const getPlaylistById = async (req, res) => {
     try {
-        const playlist = await Playlist.findById(req.params.id).populate('songs');
-        if (!playlist) return res.status(404).json({ message: "Playlist not found" });
+        const { playlistId } = req.params;
+        const playlist = await Playlist.findById(playlistId);
+
+        if (!playlist) {
+            return res.status(404).json({ message: "Playlist not found" });
+        }
 
         res.json(playlist);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-//UPDATE-update the playlist by ID,name,song
-const updatePlaylist = async (req, res) => {
+
+// Add a song to a playlist
+const addSongToPlaylist = async (req, res) => {
+     console.log(req.params)
     try {
-        const { name, songs } = req.body;
+        const { playlistId, songId } = req.params;
 
-        const updatedPlaylist = await Playlist.findByIdAndUpdate(
-            req.params.id,
-            { name, songs },
-            { new: true }
-        ).populate('songs');
+        const playlist = await Playlist.findById(playlistId);
+        if (!playlist) return res.status(404).json({ message: "Playlist not found" });
 
-        res.json(updatedPlaylist);
+        // Avoid duplicate songs
+        if (!playlist.songs.includes(songId)) {
+            playlist.songs.push(songId);
+            await playlist.save();
+        }
+
+        res.json({ message: "Song added to playlist", playlist });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-//DELETE-delete the playlist using ID
+
+// Remove a song from a playlist
+const removeSongFromPlaylist = async (req, res) => {
+    try {
+        const { playlistId, songId } = req.params;
+
+        const playlist = await Playlist.findById(playlistId);
+        if (!playlist) return res.status(404).json({ message: "Playlist not found" });
+
+        playlist.songs = playlist.songs.filter(song => song.toString() !== songId);
+        await playlist.save();
+
+        res.json({ message: "Song removed from playlist", playlist });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// Delete a playlist
 const deletePlaylist = async (req, res) => {
     try {
-        await Playlist.findByIdAndDelete(req.params.id);
+        const { playlistId } = req.params;
+        const userId = req.user.id;
+
+        const playlist = await Playlist.findOneAndDelete({ _id: playlistId, user: userId });
+
+        if (!playlist) return res.status(404).json({ message: "Playlist not found" });
+
+        // Remove playlist reference from user
+        await User.findByIdAndUpdate(userId, { $pull: { playlists: playlistId } });
+
         res.json({ message: "Playlist deleted successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-
-
-
-
-module.exports={createPlaylist,getAllPlaylists,getPlaylistById,updatePlaylist,deletePlaylist}
-
+module.exports={createPlaylist,getUserPlaylists, getPlaylistById,addSongToPlaylist,removeSongFromPlaylist,deletePlaylist}

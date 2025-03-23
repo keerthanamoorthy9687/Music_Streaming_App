@@ -1,14 +1,16 @@
 const mongoose=require('mongoose')
 
-const Songs=new mongoose.Schema({
+const Songs=new mongoose.Schema(
+    {
     title:{type:String,required:true} ,
-    artist:{type: String},
+    artist: { type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
     genre: {Type:String},
     albumCover:{type: String},
+    duration:{type:Number},
     songUrl: {type:String},
-    uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    createdAt: { type: Date, default: Date.now },
+    createdAt:{ type: Date, default: Date.now },
 
-})
-const song=mongoose.model('song',Songs)
-module.exports=song
+}
+)
+const songs=mongoose.model('song',Songs)
+module.exports=songs

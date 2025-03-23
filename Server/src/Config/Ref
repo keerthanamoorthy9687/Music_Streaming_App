@@ -1,0 +1,232 @@
+// // register a new user:
+
+
+
+// /api/users/register
+// //when the admin as false
+// req.body
+// {
+  
+//     "username": "kowsalya chinna",
+//     "email": "kowsimeena@gmail.com",
+//     "password": "Admin",
+//     "role": "listener",
+//     "subscription": "Free",
+//     "createdAt": ""
+//   }
+// //when the admin as true
+// {
+  
+//     "username": "Balu",
+//     "email": "aadhavan3563@gmail.com",
+//     "password": "Admin",
+//     "role": "listener",
+//     " isAdmin": true,
+//     "subscription": "Free",
+//     "createdAt": ""
+//   }
+
+
+// //login  to the user:
+// /api/user/login
+// req.body
+
+// {
+//     "email": "kowsimeena@gmail.com",
+//     "password": "Admin"
+//   }
+
+//get user
+
+//  /api/users/67df5727e1956683a196ee40
+// {
+//     "_id": "67df5727e1956683a196ee40",
+//     "username": "Balu",
+//     "email": "aadhavan3563@gmail.com",
+//     "password": "$2b$10$tf8yDcE9P85nGpVWgZGuP.1kRWsFWQYY9Iva7Khe2wDu50SmW19.C",
+//     "isAdmin": true,
+//     "subscription": "Free",
+//     "likedSongs": [],
+//     "playlists": [],
+//     "createdAt": "2025-03-23T00:34:47.214Z",
+//     "__v": 0
+//   }
+
+//Artist
+
+//getAll Artist
+//    ---/api/artist/
+
+// [
+//     {
+//       "_id": "67dee1e3ac02a6c054b28207",
+//       "name": "Rahuman",
+//       "bio": " He is won Asacar award ",
+//       "favorites": [],
+//       "CreatedAt": "2025-03-22T16:14:27.153Z",
+//       "__v": 0
+//     },
+//     {
+//       "_id": "67dee2f6ac02a6c054b28209",
+//       "name": "Devi sri prasanth",
+//       "bio": "Devi Sri Prasad (2 August), commonly known by his initials Rockstar DSP,[2] is an Indian music composer, singer, lyricist, Performer primarily known for his work in Indian cinema",
+//       "favorites": [],
+//       "CreatedAt": "2025-03-22T16:19:02.752Z",
+//       "__v": 0
+//     },
+//     {
+//       "_id": "67dee432ac02a6c054b2820b",
+//       "name": "Devi sri prasanth",
+//       "bio": "Devi Sri Prasad (2 August), commonly known by his initials Rockstar DSP,[2] is an Indian music composer, singer, lyricist, Performer primarily known for his work in Indian cinema",
+//       "favorites": [],
+//       "CreatedAt": "2025-03-22T16:24:18.500Z",
+//       "__v": 0
+//     }
+//   ]
+//----get artist by Id
+//    ---/api/artist/67dee432ac02a6c054b2820b
+
+//-----update the artist by ID
+// ---/api/artist/67dee2f6ac02a6c054b28209
+// {
+//     "_id": "67dee2f6ac02a6c054b28209",
+//     "name": "Devi sri prasanth-2024 Songs",
+//     "bio": "Devi Sri Prasad (2 August), commonly known by his initials Rockstar DSP,[2] is an Indian music composer, singer, lyricist, Performer primarily known for his work in Indian cinema",
+//     "favorites": [],
+//     "CreatedAt": "2025-03-22T16:19:02.752Z",
+//     "__v": 0
+//   }
+
+//delete artist
+
+// ----/api/artist/67dee2f6ac02a6c054b28209
+// {
+//     "message": "Artist deleted successfully"
+//   }
+
+
+
+
+
+
+// 2.songs:
+
+//field validation
+// {
+//     "message": "Missing the required Fields"
+//   }
+//---/api/song/-create a new song
+//---/api/song/-get all song
+//---api/song/67df78e6f2c05c66d544577a
+// {
+//     "_id": "67df78e6f2c05c66d544577a",
+//     "title": "kadhalikka pen oruthi-ver",
+//     "artist": "67dee432ac02a6c054b2820b",
+//     "albumCover": "image",
+//     "duration": 342,
+//     "songUrl": "xyz",
+//     "createdAt": "2025-03-23T02:58:46.351Z",
+//     "__v": 0
+//   }
+
+//delete a song 
+// /api/song/67df7348bec48caf6b75996e
+// {
+//     "message": "User deleted successfully"
+//   }
+
+//----playlist-----
+//create a new playlist
+// {
+//     "name": "Chill Vibes",
+//     "user": "67df5727e1956683a196ee40",
+//     "songs": [
+//       "67df78e6f2c05c66d544577a"
+//     ],
+//     "isPublic": true,
+//     "coverImage": "https://example.com/images/chill-vibes.jpg"
+//   }
+
+//Get All playlist
+//---api/playlists/
+
+// [
+//     {
+//       "_id": "67df9ccdc24fbb50726c415f",
+//       "name": "Chill Vibes",
+//       "user": "67df5727e1956683a196ee40",
+//       "songs": [
+//         "67df78e6f2c05c66d544577a"
+//       ],
+//       "createdAt": "2025-03-23T05:31:57.032Z",
+//       "__v": 0
+//     },
+//     {
+//       "_id": "67df9d2dc24fbb50726c4162",
+//       "name": "popUps",
+//       "user": "67df5727e1956683a196ee40",
+//       "songs": [
+//         "67df78e6f2c05c66d544577a"
+//       ],
+//       "createdAt": "2025-03-23T05:33:33.756Z",
+//       "__v": 0
+//     },
+//     {
+//       "_id": "67df9d39c24fbb50726c4165",
+//       "name": "popUps",
+//       "user": "67df5727e1956683a196ee40",
+//       "songs": [
+//         "67df78e6f2c05c66d544577a"
+//       ],
+//       "createdAt": "2025-03-23T05:33:45.375Z",
+//       "__v": 0
+//     }
+//   ]
+
+
+//---add to song playlist---
+// ---/api/playlists/67df9ccdc24fbb50726c415f/add/67df78e6f2c05c66d544577a
+// {
+//   "message": "Song added to playlist",
+//   "playlist": {
+//     "_id": "67df9ccdc24fbb50726c415f",
+//     "name": "Chill Vibes",
+//     "user": "67df5727e1956683a196ee40",
+//     "songs": [
+//       "67df78e6f2c05c66d544577a"
+//     ],
+//     "createdAt": "2025-03-23T05:31:57.032Z",
+//     "__v": 0
+//   }
+// }
+
+
+//----remove the playlist 
+
+// ----/api/playlist/:playlistId/remove/songId
+
+//{
+//     "message": "Song added to playlist",
+//     "playlist": {
+//       "_id": "67df9ccdc24fbb50726c415f",
+//       "name": "Chill Vibes",
+//       "user": "67df5727e1956683a196ee40",
+//       "songs": [
+//         "67df78e6f2c05c66d544577a"
+//       ],
+//       "createdAt": "2025-03-23T05:31:57.032Z",
+//       "__v": 0
+//     }
+//   }
+
+//-----Delete the playlist 
+// {
+//     "_id": "67df9d2dc24fbb50726c4162",
+//     "name": "popUps",
+//     "user": "67df5727e1956683a196ee40",
+//     "songs": [
+//       "67df78e6f2c05c66d544577a"
+//     ],
+//     "createdAt": "2025-03-23T05:33:33.756Z",
+//     "__v": 0
+//   }
