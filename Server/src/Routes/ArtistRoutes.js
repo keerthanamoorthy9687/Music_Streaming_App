@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const artistControl=require('../Controller/ArtistController')
+const artistControl=require('../controller/ArtistController')
 // const authMiddleware=require('../Middleware/AuthMiddleware');
 // const adminMiddleware=require('../Middleware/AdminMiddleware')
 

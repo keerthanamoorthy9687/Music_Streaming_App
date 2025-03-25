@@ -1,9 +1,9 @@
-const user = require("../Models/UserModels");
+const user = require("../models/UserModels");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); 
-// const dotenv=require('dotenv');
-// dotenv.config();
-// console.log('JWT_SECRET',process.env.JWT_SECRET)
+const dotenv=require('dotenv');
+dotenv.config();
+console.log('JWT_SECRET',process.env.JWT_SECRET)
 
 //  CREATE - Register a new user
 const register=async(req,res)=>{
@@ -43,7 +43,7 @@ const register=async(req,res)=>{
             if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
     
             // Generate JWT Token
-            const token = jwt.sign({ id: loginUser._id },"secret",{ expiresIn: "7d" });
+            const token = jwt.sign({ id: loginUser._id },process.env.JWT_SECRET,{ expiresIn: "7d" });
     
             res.json({ token, user: { id: loginUser._id, username: loginUser.name, email: loginUser.email } });
         } catch (error) {

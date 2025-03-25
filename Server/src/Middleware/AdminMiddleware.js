@@ -1,4 +1,4 @@
-const user=require('../Models/UserModels')
+const user=require('../models/UserModels')
 
 const adminMiddleware = async(req, res, next) => {
     console.log("User data in adminMiddleware:", req.user)

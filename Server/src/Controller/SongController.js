@@ -1,4 +1,4 @@
-const song = require("../Models/SongModels");
+const song = require("../models/SongModels");
 // const upload=require('..')
 
 //  CREATE - Create a song

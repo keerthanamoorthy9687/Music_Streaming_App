@@ -6,18 +6,18 @@ dotenv.config();
 
 //connecting to the MongoDB
 
-const connectDB=require('./src/Config/db')
+const connectDB=require('./src/config/db')
 connectDB();
 
 //converting the json format
 app.use(express.json());
 //define the Routes
-const userRoute=require('./src/Routes/UserRoutes')
-const songRoute=require('./src/Routes/SongRoutes')
-const playlistRoute=require('./src/Routes/PlaylistRoutes')
-const artistRoute=require('./src/Routes/ArtistRoutes');
-const likeRoute=require('./src/Routes/LikeRoutes');
-const CommentRoute=require('./src/Routes/CommentRoutes');
+const userRoute=require('./src/routes/UserRoutes')
+const songRoute=require('./src/routes/SongRoutes')
+const playlistRoute=require('./src/routes/PlaylistRoutes')
+const artistRoute=require('./src/routes/ArtistRoutes');
+const likeRoute=require('./src/routes/LikeRoutes');
+const CommentRoute=require('./src/routes/CommentRoutes');
 
 
 app.use('/api/users',userRoute);

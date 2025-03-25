@@ -1,4 +1,4 @@
-const Like = require('../Models/LikeModels');
+const Like = require('../models/LikeModels');
 // const user=require('../Models/UserModels')
 
 // Like a song or playlist

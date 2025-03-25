@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const playlistControl=require('../Controller/PlaylistController')
+const playlistControl=require('../controller/PlaylistController')
 
 
 //define route path

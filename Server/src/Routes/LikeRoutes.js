@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const likeControl=require('../Controller/LikeController')
+const likeControl=require('../controller/LikeController')
 // const authMiddleware=require('../Middleware/AuthMiddleware');
 
 

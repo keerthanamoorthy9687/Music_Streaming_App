@@ -1,4 +1,4 @@
-const Comment = require('../Models/Comment');
+const Comment = require('../models/Comment');
 
 // Add a comment on a song or playlist
 const addComment = async (req, res) => {

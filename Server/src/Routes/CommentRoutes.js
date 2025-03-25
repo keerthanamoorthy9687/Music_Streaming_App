@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const commentControl=require('../Controller/CommentController')
+const commentControl=require('../controller/CommentController')
 
 //define route path
 router.post('/', commentControl.addComment); // Add a comment

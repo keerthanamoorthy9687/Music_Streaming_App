@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const songControl=require('../Controller/SongController')
+const songControl=require('../controller/SongController')
 const upload=require('../uploads/Upload')
 
 

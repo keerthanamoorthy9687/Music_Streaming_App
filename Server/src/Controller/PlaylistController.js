@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose');
-const Playlist = require('../Models/PlaylistModels');
-const User=require('../Models/UserModels')
+const Playlist = require('../models/PlaylistModels');
+const User=require('../models/UserModels')
 
 
 

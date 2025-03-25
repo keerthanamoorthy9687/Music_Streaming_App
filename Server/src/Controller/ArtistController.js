@@ -1,4 +1,4 @@
-const Artist = require('../Models/ArtistsModels');
+const Artist = require('../models/ArtistsModels');
 
 
 //  Create a new artist (Admin Only)
