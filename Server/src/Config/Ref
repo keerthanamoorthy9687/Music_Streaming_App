@@ -111,12 +111,33 @@
 
 // 2.songs:
 
-//field validation
-// {
-//     "message": "Missing the required Fields"
-//   }
+
 //---/api/song/-create a new song
+// {
+// 	"title": "Nillava vaa sellave vaa ",
+// 	"artist": "67dee432ac02a6c054b2820b",
+// 	"duration": 342,
+// 	"fileUrl": "https://musicapp.com/songs/shape-of-you.mp3",
+// 	"metadata": {
+// 	  "bitrate": "320kbps",
+// 	  "format": "MP3",
+// 	  "sampleRate": "44.1kHz",
+// 	  "addedBy": "67df5727e1956683a196ee40",
+// 	  "uploadedAt": "2025-03-25T06:44:07.644Z"
+// 	},
+// 	"_id": "67e250b7b793794a638e5b9f",
+// 	"createdAt": "2025-03-23T02:58:46.351Z",
+// 	"updatedAt": "2025-03-23T02:58:46.351Z",
+// 	"__v": 0
+//   }
 //---/api/song/-get all song
+// fileUrl: "https://musicapp.com/songs/shape-of-you.mp3",
+// metadata: {
+// 	bitrate: "320kbps",
+// 	format: "MP3",
+// 	sampleRate: "44.1kHz",
+// 	addedBy: userId
+// }
 //---api/song/67df78e6f2c05c66d544577a
 // {
 //     "_id": "67df78e6f2c05c66d544577a",

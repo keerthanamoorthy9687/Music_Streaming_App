@@ -1,16 +1,21 @@
-const mongoose=require('mongoose')
+const mongoose = require("mongoose");
 
-const Songs=new mongoose.Schema(
-    {
-    title:{type:String,required:true} ,
-    artist: { type: mongoose.Schema.Types.ObjectId, ref: 'Artist'},
-    genre: {Type:String},
-    albumCover:{type: String},
-    duration:{type:Number},
-    songUrl: {type:String},
-    createdAt:{ type: Date, default: Date.now },
+const Songs = new mongoose.Schema({
+    title: { type: String, required: true },
+    artist: { type: String, required: true },
+    album: { type: String },
+    genre: { type: String },
+    duration: { type: Number },  // Duration in seconds
+    releaseDate: { type: Date },
+    fileUrl: { type: String, required: true }, // Link to stream song
+    metadata: {
+        bitrate: String,
+        format: String,
+        sampleRate: String,
+        addedBy: { type: String },
+        uploadedAt: { type: Date, default: Date.now }
+    }
+}, { timestamps: true });
+const song=mongoose.model("Song", Songs);
 
-}
-)
-const songs=mongoose.model('song',Songs)
-module.exports=songs
+module.exports = song

@@ -1,17 +1,14 @@
 const song = require("../Models/SongModels");
+const upload=require('../Config/Upload')
 
 //  CREATE - Create a song
 const createSong = async (req, res) => {
   console.log(req.body)
  
 try {
-  const {title,artist,genre,songUrl,duration}=req.body
-  // validation
-  if(!title||!artist||!genre||!songUrl||!duration){
-    res.status(401).json({message:"Missing the required Fields"})
-  }
+ 
     const newSongs = new song(req.body);
-    console.log('newSog',newSongs)
+    console.log('newSong',newSongs)
     await newSongs.save();
     res.status(201).json(newSongs);
   } catch (error) {
@@ -74,10 +71,33 @@ try {
 const deleteSong = async (req, res) => {
   try {
     await song.findByIdAndDelete(req.params.id);
-    res.json({ message: "User deleted successfully" });
+    res.json({ message: "Song deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting song", error });
   }
 };
 
-module.exports={createSong,getSongs,getSong,updateSong,deleteSong}
+const uploadedSong= async(req, res) => {
+  try {
+      const newSong = new song({
+          title: req.body.title,
+          artist: req.body.artist,
+          album: req.body.album,
+          duration: req.body.duration,
+          fileUrl: `/uploads/${req.file.filename}` // Save file path
+      });
+
+      await newSong.save();
+      res.status(201).json({ message: 'File uploaded successfully', song: newSong });
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+};
+
+// // Serve Uploaded Files (for audio streaming)
+// router.get('/stream/:filename', (req, res) => {
+//   const filePath = `./uploads/${req.params.filename}`;
+//   res.sendFile(filePath, { root: '.' });
+// });
+
+module.exports={createSong,getSongs,getSong,updateSong,deleteSong,uploadedSong}

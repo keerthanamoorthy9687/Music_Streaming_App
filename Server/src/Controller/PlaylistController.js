@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const Playlist = require('../Models/PlaylistModels');
 const User=require('../Models/UserModels')
 
@@ -89,21 +90,36 @@ const removeSongFromPlaylist = async (req, res) => {
 
 // Delete a playlist
 const deletePlaylist = async (req, res) => {
+    console.log(req.params)
     try {
         const { playlistId } = req.params;
-        const userId = req.user.id;
+       
 
-        const playlist = await Playlist.findOneAndDelete({ _id: playlistId, user: userId });
+        const playlist = await Playlist.findByIdAndDelete( playlistId );
 
         if (!playlist) return res.status(404).json({ message: "Playlist not found" });
 
-        // Remove playlist reference from user
-        await User.findByIdAndUpdate(userId, { $pull: { playlists: playlistId } });
+        // // Remove playlist reference from user
+        // await User.findByIdAndUpdate( { $pull: { playlists:playlistId } });
 
         res.json({ message: "Playlist deleted successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+// const deletePlaylist = async (req, res) => {
+//     try {
+//         const { playlistId } = req.params;
+
+//         const deletedPlaylist = await Playlist.findByIdAndDelete(artistId);
+//         if (!deletedPlaylist) {
+//             return res.status(404).json({ message: "Artist not found" });
+//         }
+
+//         res.json({ message: "Artist deleted successfully" });
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// };
 
 module.exports={createPlaylist,getUserPlaylists, getPlaylistById,addSongToPlaylist,removeSongFromPlaylist,deletePlaylist}

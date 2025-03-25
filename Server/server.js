@@ -21,7 +21,7 @@ const CommentRoute=require('./src/Routes/CommentRoutes');
 
 
 app.use('/api/users',userRoute);
-app.use('/api/song',songRoute);
+app.use('/api/songs',songRoute);
 app.use('/api/playlists',playlistRoute);
 app.use('/api/artist',artistRoute);
 app.use('/api/likes',likeRoute);

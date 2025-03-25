@@ -6,6 +6,6 @@ const Comment=new mongoose.Schema({
     songId:{type:mongoose.Schema.Types.ObjectId,ref:'song'},
     commentText:{type:String},
     createdAt:{type:Date,default:Date.now}
-})
+}, { timestamps: true })
 const comment=mongoose.model('comment',Comment)
 module.exports=comment

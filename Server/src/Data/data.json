@@ -1,9 +1,49 @@
-{
-   " user":{
-    "username":"",
-    "email":"",
-    "password":""
+[
+   {
+      "username": "kayathri",
+      "email": "kayathri@gmail.con",
+      "password": "",
+      "isAdmin": "",
+      "role": "",
+      "subscription": "",
+      "likedSongs": [],
+      "playlists": [],
+      "createdAt": ""
+    },
+    {
+   "title": "Nillava vaa ",
+   "artist": "67dee432ac02a6c054b2820b",
+   "albumCover": "image-1",
+   "duration": 342,
+   "songUrl": "xyz",
+   "createdAt": "2025-03-23T02:58:46.351Z",
+   "__v": 0
+    },
+    {
+      "name": "illayaraja",
+      "bio": "Ilaiyaraaja (born Gnanathesigan) is an Indian musician, composer, arranger, conductor, orchestrator, multi-instrumentalist, lyricist and playback singer popular ",
+      "profileImage": "https://en.wikipedia.org/wiki/Ilaiyaraaja#/media/File:Ilaiyaraaja_at_Merku_Thodarchi_Malai_Press_Meet.jpg",
+      "favorites": "",
+      "CreatedAt":" 03-2-1980"
+    },{
+      "name": "",
+      "user": "",
+      "songs": [],
+      "isPublic": "",
+      "createdAt": ""
+    },
+    {
+      "userId":"",
+      "songId":""
+    },
+    {
+      "userId":"",
+      "songId":"",
+      "commentText":"",
+      "createdAt":""
+    }
 
 
-           }
-}
+
+
+]
