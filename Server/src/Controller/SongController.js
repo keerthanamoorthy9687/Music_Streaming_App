@@ -1,5 +1,5 @@
 const song = require("../Models/SongModels");
-const upload=require('../Config/Upload')
+// const upload=require('..')
 
 //  CREATE - Create a song
 const createSong = async (req, res) => {
@@ -84,7 +84,7 @@ const uploadedSong= async(req, res) => {
           artist: req.body.artist,
           album: req.body.album,
           duration: req.body.duration,
-          fileUrl: `/uploads/${req.file.filename}` // Save file path
+          fileUrl: `/uploads/${req.body.fileUrl}` // Save file path
       });
 
       await newSong.save();

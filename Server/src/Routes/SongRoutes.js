@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const songControl=require('../Controller/SongController')
-const upload=require('../Config/Upload')
+const upload=require('../uploads/Upload')
 
 
 //define route path
