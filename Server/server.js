@@ -2,6 +2,8 @@ const dotenv=require("dotenv");
 const express=require('express');
 const app=express();
 dotenv.config();
+const cors = require('cors');
+app.use(cors());
 
 
 //connecting to the MongoDB
